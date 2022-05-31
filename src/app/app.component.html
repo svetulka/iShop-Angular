@@ -1,4 +1,7 @@
 <div class="container">
-	<h1 class="display-4">IShop</h1>
-	<app-product [products-arr]="products"></app-product>
+	<h1 class="display-4">{{ shopTitle }}</h1>
+	<app-product 
+		[products-arr]="products"
+		[shop-title]="shopTitle"
+	></app-product>
 </div>

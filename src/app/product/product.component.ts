@@ -8,9 +8,11 @@ import { productInterface } from './shared/interfaces';
 })
 export class ProductComponent implements OnInit {
   @Input('products-arr') productsArr: Array<productInterface>;
+  @Input('shop-title') shopTitle: string;
   
   constructor() {
     this.productsArr = [];
+    this.shopTitle = '';
    }
   
   ngOnInit(): void {
