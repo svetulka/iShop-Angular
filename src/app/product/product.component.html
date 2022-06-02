@@ -9,7 +9,10 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let product of productsArr" class="align-middle">
+		<tr *ngFor="let product of productsArr" 
+			[ngClass]="{selected: product.isSelected}"
+			(click)="handleRowClick(product.id)"
+			class="align-middle">
 			<td>
 				<span>
 					<strong>

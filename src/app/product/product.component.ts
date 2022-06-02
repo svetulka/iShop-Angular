@@ -8,6 +8,13 @@ import { ProductInterface } from './shared/interfaces';
 })
 export class ProductComponent {
   @Input('products-arr') productsArr: Array<ProductInterface> = [];
-  
+
+  selected!: number;
+
   constructor() {}
+
+  handleRowClick(id: number) {
+    this.productsArr[id].isSelected = !this.productsArr[id].isSelected;
+    this.selected = id;
+  }
 }
