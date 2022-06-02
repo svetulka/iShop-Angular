@@ -5,14 +5,19 @@
 			<td>Price</td>
 			<td>Picture</td>
 			<td>Count in stock</td>
+			<td>Action</td>
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let product of productsArr">
+		<tr *ngFor="let product of productsArr" class="align-middle">
 			<td>
-				<p>
-					{{ product.title }}
-				</p>
+				<span>
+					<strong>
+						<em>
+							{{ product.title }}
+						</em>
+					</strong>
+				</span>
 			</td>
 			<td>
 				{{ product.price }}
@@ -21,6 +26,9 @@
 				<img [src]="product.picture" alt="" width="230" height="151">
 			</td>
 			<td>{{ product.countInStock }}</td>
+			<td>
+				<button type="button" class="btn btn-danger">Delete</button>
+			</td>
 		</tr>
 	</tbody>
 </table>

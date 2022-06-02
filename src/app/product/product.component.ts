@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProductInterface } from './shared/interfaces';
 
 @Component({
@@ -8,7 +8,6 @@ import { ProductInterface } from './shared/interfaces';
 })
 export class ProductComponent {
   @Input('products-arr') productsArr: Array<ProductInterface> = [];
-  @Input('shop-title') shopTitle: string = '';
   
   constructor() {}
 }
