@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ProductInterface } from './shared/interfaces';
+import { ProductInterface } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-product',
