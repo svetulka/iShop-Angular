@@ -9,8 +9,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let product of productsArr" 
-			[ngClass]="{selected: product.isSelected}"
+		<tr *ngFor="let product of productsArr" 			
+			[ngClass]="selected === product.id ? 'selected' : '' "
 			(click)="handleRowClick(product.id)"
 			class="align-middle">
 			<td>
@@ -30,7 +30,7 @@
 			</td>
 			<td>{{ product.countInStock }}</td>
 			<td>
-				<button type="button" class="btn btn-danger">Delete</button>
+				<button type="button" class="btn btn-danger" (click)="delete($event, product.id)">Delete</button>
 			</td>
 		</tr>
 	</tbody>
