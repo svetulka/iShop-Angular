@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProductInterface } from './shared/interfaces';
 
 @Component({
@@ -8,7 +8,26 @@ import { ProductInterface } from './shared/interfaces';
 })
 export class ProductComponent {
   @Input('products-arr') productsArr: Array<ProductInterface> = [];
-  @Input('shop-title') shopTitle: string = '';
-  
+
+  selected!: number | null;
+
   constructor() {}
+
+  handleRowClick(id: number) {        
+    if (this.selected && this.selected === id) {
+      this.selected = null;
+      return;
+    }
+    this.selected = id;
+  }
+
+  delete(event: Event, id: number) {
+    event.stopPropagation();
+
+    let confirmDelete = confirm(`Delete this ${this.productsArr[id].title} product from the list?`);
+
+    if (confirmDelete) {
+      this.productsArr = this.productsArr.filter(item => item.id !== id);
+    }
+  }
 }
