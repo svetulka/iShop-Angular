@@ -1,6 +1,11 @@
 <div class="container">
 	<h1 class="display-4">{{ shopTitle }}</h1>
-	<app-product 
-		[products-arr]="products">
-	</app-product>
+	<div class="row">
+		<app-product 
+			[products-arr]="products"
+			class="col-sm-8"
+		>
+		</app-product>
+		<app-product-card class="col-sm-4" [products-arr]="products"></app-product-card>
+	</div>
 </div>

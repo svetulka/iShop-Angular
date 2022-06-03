@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { ProductInterface } from 'src/app/shared/interfaces';
 
 @Component({
@@ -9,8 +9,11 @@ import { ProductInterface } from 'src/app/shared/interfaces';
 export class ProductComponent {
   @Input('products-arr') productsArr: Array<ProductInterface> = [];
 
+  
   selected!: number | null;
 
+  // @Output('selected-row') public selectedRow: number | null = this.selected;
+  
   constructor() {}
 
   handleRowClick(id: number) {        
