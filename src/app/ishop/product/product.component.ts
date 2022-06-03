@@ -14,7 +14,8 @@ export class ProductComponent {
 
   // @Output('selected-row') public selectedRow: number | null = this.selected;
   
-  constructor() {}
+  constructor() {
+  }
 
   handleRowClick(id: number) {        
     if (this.selected && this.selected === id) {

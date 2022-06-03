@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IshopModule } from './ishop/isop.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { IshopModule } from './ishop/isop.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     IshopModule
   ],
   providers: [],
