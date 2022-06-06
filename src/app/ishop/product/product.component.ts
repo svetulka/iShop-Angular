@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductInterface } from 'src/app/shared/interfaces';
 
 @Component({
@@ -8,30 +8,21 @@ import { ProductInterface } from 'src/app/shared/interfaces';
 })
 export class ProductComponent {
   @Input('products-arr') productsArr: Array<ProductInterface> = [];
+  @Input('selected') selected: number | null = null;
 
-  
-  selected!: number | null;
+  @Output('on-row-click') public onRowClick = new EventEmitter<number>();
+  @Output('on-delete') public onDelete = new EventEmitter<number>();
 
-  // @Output('selected-row') public selectedRow: number | null = this.selected;
-  
+
   constructor() {
   }
 
-  handleRowClick(id: number) {        
-    if (this.selected && this.selected === id) {
-      this.selected = null;
-      return;
-    }
-    this.selected = id;
+  handleRowClick(id: number) {     
+    this.onRowClick.emit(id);   
   }
 
-  delete(event: Event, id: number) {
+  handleDelete(event: Event, id: number) {
     event.stopPropagation();
-
-    let confirmDelete = confirm(`Delete this ${this.productsArr[id].title} product from the list?`);
-
-    if (confirmDelete) {
-      this.productsArr = this.productsArr.filter(item => item.id !== id);
-    }
+    this.onDelete.emit(id);
   }
 }

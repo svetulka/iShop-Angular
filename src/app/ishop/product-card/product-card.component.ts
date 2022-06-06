@@ -9,15 +9,10 @@ import { ProductInterface } from 'src/app/shared/interfaces';
 
 export class ProductCardComponent implements OnInit {
 	@Input('products-arr') productsArr: Array<ProductInterface> = [];
-	// @Input('selected-row') selectedRow!: number | null;
+	@Input('selected') selected: number | null = null;
 	
-	constructor(){
-		console.log('this.productsArr', this.productsArr);		
-	}
+	constructor(){}
 	
-	ngOnInit(): void {
-		// console.log('this.selectedRow', this.selectedRow);		
-	}
-
+	ngOnInit(): void {}
 
 }

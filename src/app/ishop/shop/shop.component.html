@@ -3,9 +3,16 @@
 	<div class="row">
 		<app-product 
 			[products-arr]="products"
+			[selected]="selected"
+			(on-delete)="onDelete($event)"
+			(on-row-click)="onRowClick($event)"
 			class="col-sm-8"
 		>
 		</app-product>
-		<app-product-card class="col-sm-4" [products-arr]="products"></app-product-card>
+		<app-product-card class="col-sm-4" 
+			[products-arr]="products"  
+			[selected]="selected"
+			>
+		</app-product-card>
 	</div>
 </div>

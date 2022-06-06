@@ -1,19 +1,19 @@
 <h2 class="display-6 text-center">Product details</h2>
 
-<div class="container">
+<div *ngIf="selected != null" class="container">
 	<div class="row border">
-		<img [src]="productsArr[0]?.picture" alt="" width="230" height="151">
+		<img [src]="productsArr[selected]?.picture" alt="" width="230" height="151">
 	</div>
 	<div class="row border">
 		<div class="col-md-6 text-primary"><strong>Title</strong></div>
-		<div class="col-md-6">{{ productsArr[0]?.title }}</div>
+		<div class="col-md-6">{{ productsArr[selected]?.title }}</div>
 	</div>
 	<div class="row border">
 		<div class="col-md-6 text-primary"><strong>Price</strong></div>
-		<div class="col-md-6">{{ productsArr[0]?.price }}</div>
+		<div class="col-md-6">{{ productsArr[selected]?.price }}</div>
 	</div>
 	<div class="row border">
 		<div class="col-md-6 text-primary"><strong>Ccount in stock</strong></div>
-		<div class="col-md-6">{{ productsArr[0]?.countInStock }}</div>
+		<div class="col-md-6">{{ productsArr[selected]?.countInStock }}</div>
 	</div>
 </div>
