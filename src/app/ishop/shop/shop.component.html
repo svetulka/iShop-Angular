@@ -10,9 +10,18 @@
 		>
 		</app-product>
 		<app-product-card class="col-sm-4" 
-			[products-arr]="products"  
-			[selected]="selected"
-			>
+			[selected-title]="selectedPrice"
+			[selected-price]="selectedPrice"
+			[selected-picture]="selectedPicture"
+			[selected-count-in-stock]="selectedCountInStock"
+		>
+		
 		</app-product-card>
+
+	</div>
+	<div class="row">
+		<div class="btn-wrapper text-center col-sm-8">
+			<button type="button" class="btn btn-primary btn-sm btn-block" (click)="addNewProduct()">Add New Product</button>
+		</div>
 	</div>
 </div>

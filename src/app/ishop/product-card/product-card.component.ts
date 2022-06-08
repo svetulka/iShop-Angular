@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { ProductInterface } from 'src/app/shared/interfaces';
+import { Component, Input } from '@angular/core';
 
 @Component({
 	selector: 'app-product-card',
@@ -7,12 +6,10 @@ import { ProductInterface } from 'src/app/shared/interfaces';
 	styleUrls: ['./product-card.component.scss']
 })
 
-export class ProductCardComponent implements OnInit {
-	@Input('products-arr') productsArr: Array<ProductInterface> = [];
-	@Input('selected') selected: number | null = null;
-	
-	constructor(){}
-	
-	ngOnInit(): void {}
+export class ProductCardComponent {
+	@Input('selected-title') selectedTitle!: string | null;
+	@Input('selected-price') selectedPrice!: string | null;
+	@Input('selected-picture') selectedPicture!: string | null;
+	@Input('selected-count-in-stock') selectedCountInStock!: number | null;
 
 }

@@ -9,8 +9,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let product of productsArr" 			
-			[ngClass]="selected === product.id ? 'selected' : '' "
+		<tr *ngFor="let product of productsArr; let productIndex = index" 			
+			[ngClass]="selected === productIndex ? 'selected' : '' "
 			(click)="handleRowClick(product.id)"
 			class="align-middle">
 			<td>
@@ -26,11 +26,13 @@
 				{{ product.price }}
 			</td>
 			<td>
+				<!-- <p class="picture-url">{{ product.picture }}</p> -->
 				<img [src]="product.picture" alt="" width="230" height="151">
 			</td>
 			<td>{{ product.countInStock }}</td>
-			<td>
-				<button type="button" class="btn btn-danger" (click)="handleDelete($event, product.id)">Delete</button>
+			<td class="action-buttons-wrapper">
+				<button type="button" class="btn btn-primary btn-sm" (click)="handleEdit($event, product.id)">Edit</button>
+				<button type="button" class="btn btn-danger btn-sm" (click)="handleDelete($event, product.id)">Delete</button>
 			</td>
 		</tr>
 	</tbody>
