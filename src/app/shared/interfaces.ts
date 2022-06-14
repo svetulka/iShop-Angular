@@ -5,3 +5,10 @@ export interface ProductInterface{
 	picture: string;
 	countInStock: number;
 }
+
+export enum ProductCardState {
+	nothing = 'nothing',
+	show = 'show',
+	edit = 'edit',
+	create = 'create'
+}

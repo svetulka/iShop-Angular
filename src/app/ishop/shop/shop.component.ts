@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductInterface } from 'src/app/shared/interfaces';
+import { ProductCardState, ProductInterface } from 'src/app/shared/interfaces';
 import { HttpService } from '../ishop.service';
 
 @Component({
@@ -20,10 +20,16 @@ export class ShopComponent implements OnInit {
   selectedPrice!: string | null;
   selectedPicture!: string | null;
   selectedCountInStock!: number | null;
+  productCardState: ProductCardState = ProductCardState.nothing;
   
   constructor(private httpService: HttpService) { }
- 
-  ngOnInit() {    
+  
+  get ProductCardState() {
+    return ProductCardState;
+  }
+
+
+  ngOnInit() {   
     this.httpService.getData().subscribe((data: any) => this.products = data);
   }
 
@@ -32,12 +38,14 @@ export class ShopComponent implements OnInit {
 
     if (confirmDelete) {
       this.products = this.products.filter(item => item.id !== id);
+      this.productCardState = ProductCardState.nothing;
       this.resetSelectedProps();
     }
   }
 
   onEdit(id: number) {
-    
+    this.productCardState = ProductCardState.edit;
+    console.log('Click Edit button');
   }
 
   onRowClick(id: number) {
@@ -45,15 +53,15 @@ export class ShopComponent implements OnInit {
 
     if (this.selected === index) {
       this.resetSelectedProps();
+      this.productCardState = ProductCardState.nothing;
       return;
     }
-
+    this.productCardState = ProductCardState.show;
     this.selected = index;
     this.selectedTitle = this.products[index].title;
     this.selectedPrice = this.products[index].price;
     this.selectedPicture = this.products[index].picture;
     this.selectedCountInStock = this.products[index].countInStock;
-
   }
 
   resetSelectedProps() {
@@ -65,6 +73,19 @@ export class ShopComponent implements OnInit {
   }
 
   addNewProduct() {
-    console.log('CLick on Add new product button');
+    console.log('addNewProduct click!');
+    this.productCardState = ProductCardState.create;
   }
+
+  // onCancel() {
+  //   console.log('click on cancel', productCardState);
+  //   this.productCardState = ProductCardState.nothing;
+  //   console.log(this.productCardState);
+  //   console.log(productCardState);
+  // };
+
+  setProductCardState(newState: ProductCardState) {
+    this.productCardState = newState;
+  }
+
 }

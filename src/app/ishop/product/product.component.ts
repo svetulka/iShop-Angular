@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output, OnChanges, SimpleChange } from '@angular/core';
-import { ProductInterface } from 'src/app/shared/interfaces';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ProductCardState, ProductInterface } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-product',
@@ -9,6 +9,7 @@ import { ProductInterface } from 'src/app/shared/interfaces';
 export class ProductComponent{
   @Input('products-arr') productsArr: Array<ProductInterface> = [];
   @Input('selected') selected!: number | null;
+  @Input() productCardState!: ProductCardState;
 
   @Output('on-row-click') public onRowClick = new EventEmitter<number>();
   @Output('on-delete') public onDelete = new EventEmitter<number>();
@@ -16,10 +17,6 @@ export class ProductComponent{
 
 
   constructor() {
-  }
-
-  ngOnChanges(changes:SimpleChange) {
-    console.log(changes)
   }
 
   handleRowClick(id: number) {
@@ -32,7 +29,8 @@ export class ProductComponent{
   }
 
   handleEdit(event: Event, id: number) {
-    event.stopPropagation();
+    // event.stopPropagation();
     this.onEdit.emit(id);
   }
+
 }
