@@ -16,24 +16,20 @@ export class ProductComponent{
   @Output('on-edit') public onEdit = new EventEmitter<number>();
 
 
-  // constructor() {
-  // }
-
   handleRowClick(id: number | null) {
-    if (typeof id !== 'number') return;
+    if (typeof id !== 'number') throw new Error('The argument ID must be a number');
     this.onRowClick.emit(id)
   }
 
   handleDelete(event: Event, id: number | null) {
-    if (typeof id !== 'number') return;
+    if (typeof id !== 'number') throw new Error('The argument ID must be a number');
     event.stopPropagation();
     this.onDelete.emit(id);
   }
 
   handleEdit(event: Event, id: number | null) {
-    if (typeof id !== 'number') return;
+    if (typeof id !== 'number') throw new Error('The argument ID must be a number');
     // event.stopPropagation();
     this.onEdit.emit(id);
   }
-
 }
