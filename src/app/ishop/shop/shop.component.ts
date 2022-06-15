@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductCardState, ProductInterface } from 'src/app/shared/interfaces';
 import { ProductsService } from '../ishop.service';
@@ -35,11 +34,15 @@ export class ShopComponent implements OnInit {
   }
 
   onCreate(product: ProductInterface): void {
-
+    this.products.push(product);
   }
 
   onDelete(id: number) {
-    let confirmDelete = confirm(`Delete this ${this.products[id].title} product from the list?`);
+    const index = this.products.findIndex(item => item.id === id);
+
+    if (index === -1) throw new Error('No product with this ID: ' + id);
+
+    let confirmDelete = confirm(`Delete this ${this.products[index].title} product from the list?`);
 
     if (confirmDelete) {
       this.products = this.products.filter(item => item.id !== id);
@@ -78,12 +81,10 @@ export class ShopComponent implements OnInit {
   }
 
   addNewProduct() {
-    console.log('addNewProduct click!');
     this.productCardState = ProductCardState.create;
   }
 
   setProductCardState(newState: ProductCardState) {
     this.productCardState = newState;
   }
-
 }

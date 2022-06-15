@@ -9,11 +9,11 @@ import { ProductInterface } from 'src/app/shared/interfaces';
 
 export class ProductCreateComponent implements OnInit{
 	@Output('on-cancel') public onCancel = new EventEmitter();
-	@Output('add-product') public addProduct = new EventEmitter();
+	@Output('add-product') public addProduct = new EventEmitter<ProductInterface>();
 	
 	product: ProductInterface = {
 		id: null,
-		title!: '',
+		title: '',
 		price: 0,
 		picture: '',
 		countInStock: 0,
@@ -26,9 +26,5 @@ export class ProductCreateComponent implements OnInit{
 	handleCancelClick() {
 		this.onCancel.emit();
 	}
-	
-	// addProduct(){		
-	// 	// this.products.push(new ProductComponent(this.id, this.title, this.pictureUrl, this.price, this.countInStock));
-	// };
 
 }

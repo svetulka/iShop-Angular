@@ -21,6 +21,7 @@
 			<app-product-create 
 				*ngIf="productCardState === ProductCardState.create" 
 				(on-cancel)="setProductCardState(ProductCardState.nothing)"
+				(add-product)="onCreate($event); setProductCardState(ProductCardState.nothing)"
 			></app-product-create>
 		</div>
 	</div>
