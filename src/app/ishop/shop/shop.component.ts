@@ -37,7 +37,7 @@ export class ShopComponent implements OnInit {
     this.products.push(product);
   }
 
-  onDelete(id: number) {
+  productDeleted(id: number) {
     const index = this.products.findIndex(item => item.id === id);
 
     if (index === -1) throw new Error('No product with this ID: ' + id);
@@ -51,12 +51,12 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  onEdit(id: number) {
+  productEdited(id: number) {
     this.productCardState = ProductCardState.edit;
     console.log('Click Edit button');
   }
 
-  onRowClick(id: number) {
+  rowClicked(id: number) {
     const index = this.products.findIndex((item) => item.id == id);
 
     if (this.selected === index) {

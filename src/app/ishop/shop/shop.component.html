@@ -4,9 +4,9 @@
 		<app-product 
 			[products-arr]="products"
 			[selected]="selected"
-			(on-delete)="onDelete($event)"
-			(on-row-click)="onRowClick($event)"
-			(on-edit)="onEdit($event)"
+			(product-deleted)="productDeleted($event)"
+			(row-clicked)="rowClicked($event)"
+			(product-edited)="productEdited($event)"
 			class="col-sm-8"
 		>
 		</app-product>
@@ -20,8 +20,8 @@
 			</app-product-card>
 			<app-product-create 
 				*ngIf="productCardState === ProductCardState.create" 
-				(on-cancel)="setProductCardState(ProductCardState.nothing)"
-				(add-product)="onCreate($event); setProductCardState(ProductCardState.nothing)"
+				(product-canceled)="setProductCardState(ProductCardState.nothing)"
+				(product-added)="onCreate($event); setProductCardState(ProductCardState.nothing)"
 			></app-product-create>
 		</div>
 	</div>

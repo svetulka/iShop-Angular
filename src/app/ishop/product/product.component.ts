@@ -11,25 +11,25 @@ export class ProductComponent{
   @Input('selected') selected!: number | null;
   @Input() productCardState!: ProductCardState;
 
-  @Output('on-row-click') public onRowClick = new EventEmitter<number>();
-  @Output('on-delete') public onDelete = new EventEmitter<number>();
-  @Output('on-edit') public onEdit = new EventEmitter<number>();
+  @Output('row-clicked') public rowClicked = new EventEmitter<number>();
+  @Output('product-deleted') public productDeleted = new EventEmitter<number>();
+  @Output('product-edited') public productEdited = new EventEmitter<number>();
 
 
   handleRowClick(id: number | null) {
     if (typeof id !== 'number') throw new Error('The argument ID must be a number');
-    this.onRowClick.emit(id)
+    this.rowClicked.emit(id)
   }
 
   handleDelete(event: Event, id: number | null) {
     if (typeof id !== 'number') throw new Error('The argument ID must be a number');
     event.stopPropagation();
-    this.onDelete.emit(id);
+    this.productDeleted.emit(id);
   }
 
   handleEdit(event: Event, id: number | null) {
     if (typeof id !== 'number') throw new Error('The argument ID must be a number');
     // event.stopPropagation();
-    this.onEdit.emit(id);
+    this.productEdited.emit(id);
   }
 }
