@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ProductInterface } from 'src/app/shared/interfaces';
 
 @Component({
 	selector: 'app-product-create',
@@ -6,14 +7,28 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 	styleUrls: ['./product-create.component.scss']
 })
 
-export class ProductCreateComponent {
-	
+export class ProductCreateComponent implements OnInit{
 	@Output('on-cancel') public onCancel = new EventEmitter();
+	@Output('add-product') public addProduct = new EventEmitter();
+	
+	product: ProductInterface = {
+		id: null,
+		title!: '',
+		price: 0,
+		picture: '',
+		countInStock: 0,
+	}
+	
+	ngOnInit(): void {
+		this.product.id = parseInt(`${Date.now()}${Math.floor(Math.random() * 100)}`);
+	}
 
 	handleCancelClick() {
 		this.onCancel.emit();
 	}
 	
-	addProduct(){		
-	};
+	// addProduct(){		
+	// 	// this.products.push(new ProductComponent(this.id, this.title, this.pictureUrl, this.price, this.countInStock));
+	// };
+
 }

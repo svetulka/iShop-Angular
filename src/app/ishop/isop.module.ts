@@ -4,6 +4,8 @@ import { ShopComponent } from './shop/shop.component';
 import { ProductComponent } from './product/product.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
+import { FormsModule } from '@angular/forms';
+import { ProductsService } from './ishop.service';
 
 
 @NgModule({
@@ -15,9 +17,11 @@ import { ProductCreateComponent } from './product-create/product-create.componen
   ],
   imports: [
     CommonModule,
+    FormsModule
   ],
   exports: [
     ShopComponent
-  ]
+  ],
+  providers: [ProductsService]
 })
 export class IshopModule { }

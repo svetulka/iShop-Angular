@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProductCardState } from 'src/app/shared/interfaces';
 
 @Component({
@@ -9,7 +9,7 @@ import { ProductCardState } from 'src/app/shared/interfaces';
 
 export class ProductCardComponent {
 	@Input('selected-title') selectedTitle!: string | null;
-	@Input('selected-price') selectedPrice!: string | null;
+	@Input('selected-price') selectedPrice!: number | null;
 	@Input('selected-picture') selectedPicture!: string | null;
 	@Input('selected-count-in-stock') selectedCountInStock!: number | null;
 	@Input() productCardState!: ProductCardState;

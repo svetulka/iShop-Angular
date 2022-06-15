@@ -16,19 +16,22 @@ export class ProductComponent{
   @Output('on-edit') public onEdit = new EventEmitter<number>();
 
 
-  constructor() {
+  // constructor() {
+  // }
+
+  handleRowClick(id: number | null) {
+    if (typeof id !== 'number') return;
+    this.onRowClick.emit(id)
   }
 
-  handleRowClick(id: number) {
-    this.onRowClick.emit(id);   
-  }
-
-  handleDelete(event: Event, id: number) {
+  handleDelete(event: Event, id: number | null) {
+    if (typeof id !== 'number') return;
     event.stopPropagation();
     this.onDelete.emit(id);
   }
 
-  handleEdit(event: Event, id: number) {
+  handleEdit(event: Event, id: number | null) {
+    if (typeof id !== 'number') return;
     // event.stopPropagation();
     this.onEdit.emit(id);
   }

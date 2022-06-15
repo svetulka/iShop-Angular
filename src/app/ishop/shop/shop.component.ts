@@ -1,28 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductCardState, ProductInterface } from 'src/app/shared/interfaces';
-import { HttpService } from '../ishop.service';
+import { ProductsService } from '../ishop.service';
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss'],
-  providers: [HttpService]
+
 })
 
 export class ShopComponent implements OnInit {
   @Input('shop-title') shopTitle!: string;
 
   products: ProductInterface[] = [];
+
   selected!: number | null;
 
   selectedTitle!: string | null;
-  selectedPrice!: string | null;
+  selectedPrice!: number | null;
   selectedPicture!: string | null;
   selectedCountInStock!: number | null;
   productCardState: ProductCardState = ProductCardState.nothing;
   
-  constructor(private httpService: HttpService) { }
+  constructor(private productsService: ProductsService) { }
   
   get ProductCardState() {
     return ProductCardState;
@@ -30,7 +31,11 @@ export class ShopComponent implements OnInit {
 
 
   ngOnInit() {   
-    this.httpService.getData().subscribe((data: any) => this.products = data);
+    this.productsService.getData().subscribe((data: any) => this.products = data);
+  }
+
+  onCreate(product: ProductInterface): void {
+
   }
 
   onDelete(id: number) {
@@ -76,13 +81,6 @@ export class ShopComponent implements OnInit {
     console.log('addNewProduct click!');
     this.productCardState = ProductCardState.create;
   }
-
-  // onCancel() {
-  //   console.log('click on cancel', productCardState);
-  //   this.productCardState = ProductCardState.nothing;
-  //   console.log(this.productCardState);
-  //   console.log(productCardState);
-  // };
 
   setProductCardState(newState: ProductCardState) {
     this.productCardState = newState;

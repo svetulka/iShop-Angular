@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ProductInterface } from '../shared/interfaces';
 
 @Injectable()
-export class HttpService {
-
-
-
+export class ProductsService {
 	constructor(private http: HttpClient) { }
 
 	getData() {
