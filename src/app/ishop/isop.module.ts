@@ -4,7 +4,7 @@ import { ShopComponent } from './shop/shop.component';
 import { ProductComponent } from './product/product.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsService } from './ishop.service';
 
 
@@ -17,7 +17,8 @@ import { ProductsService } from './ishop.service';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     ShopComponent

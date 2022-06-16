@@ -1,42 +1,51 @@
 <div class="container">
-	<form>
+	<form [formGroup]="formCreateProduct" (ngSubmit)="submit()">
 		<h2 class="display-6 text-center">Add New Product</h2>
 		<div class="form-group">
-			<label>ID: {{ product.id }}</label>
+			<label>ID: {{ productId }}</label>
 		</div>
 		<div class="form-group">
 			<label>Title</label>
-			<input class="form-control" name="title" [(ngModel)]="product.title" #title="ngModel" required />
-			<small [hidden]="title.valid || title.untouched" class="alert alert-danger">
+			<input class="form-control" name="title" formControlName="title" required />
+			<small *ngIf="formCreateProduct.controls['title'].invalid && formCreateProduct.controls['title'].touched" 
+							class="alert alert-danger">
 				Title can't be empty
 			</small>
 		</div>
 		<div class="form-group">
 			<label>Image URL</label>
-			<input class="form-control" name="pictureUrl" [(ngModel)]="product.pictureUrl" #pictureUrl="ngModel" required
+			<input class="form-control" name="pictureUrl" formControlName="pictureUrl" required
 				pattern='(http)?s?:?(\/\/[^"]*\.(?:png|jpg|jpeg|gif|png|svg))'/>
-			<small [hidden]="pictureUrl.valid || pictureUrl.untouched" class="alert alert-danger">
-				Please, provide correct picture URL
-			</small>
+			<div *ngIf="formCreateProduct.controls['pictureUrl'].invalid && formCreateProduct.controls['pictureUrl'].touched">
+				<small *ngIf="pictureUrlFC.errors.pattern" class="alert alert-danger">
+					Please, provide correct picture URL
+				</small>
+				<small *ngIf="pictureUrlFC.errors.required" class="alert alert-danger">
+					Picture URL can't be empty
+				</small>
+			</div>
 		</div>
 		<div class="form-group">
 			<label>Price</label>
-			<input type="number" class="form-control" name="price" [(ngModel)]="product.price" #price="ngModel" required/>
-			<small [hidden]="price.valid || price.untouched" class="alert alert-danger">
+			<input type="number" class="form-control" name="price" formControlName="price" required/>
+			<small *ngIf="formCreateProduct.controls['price'].invalid && formCreateProduct.controls['price'].touched" 
+							class="alert alert-danger">
 				Price can't be empty
 			</small>
 		</div>
 		<div class="form-group">
 			<label>Count in stock</label>
-			<input type="number" class="form-control" name="countInStock" [(ngModel)]="product.countInStock" #countInStock="ngModel" required/>
-			<small [hidden]="countInStock.valid || countInStock.untouched" class="alert alert-danger">
+			<input type="number" class="form-control" name="countInStock" formControlName="countInStock" required/>
+			<small *ngIf="formCreateProduct.controls['countInStock'].invalid && formCreateProduct.controls['countInStock'].touched" 
+							class="alert alert-danger">
 				Count in stock can't be empty.
 			</small>
 		</div>
 		<div class="form-group">
 			<button class="btn btn-danger btn-sm" (click)="handleCancelClick()">Cancel</button>
-			<button class="btn btn-primary btn-sm" (click)="productAdded.emit(product)" 
-				[disabled]="title.invalid || pictureUrl.invalid || price.invalid || countInStock.invalid"
+			<button class="btn btn-primary btn-sm"
+				type="submit"
+				[disabled]="formCreateProduct.invalid || formCreateProduct.pending"
 			>Add</button>
 		</div>
 	</form>
