@@ -14,12 +14,12 @@ export class ShopComponent implements OnInit {
 
   products: ProductInterface[] = [];
 
-  selected!: number | null;
+  selected: number | null;
 
-  selectedTitle!: string | null;
-  selectedPrice!: number | null;
-  selectedPicture!: string | null;
-  selectedCountInStock!: number | null;
+  selectedTitle: string | null;
+  selectedPrice: number | null;
+  selectedPictureUrl: string | null;
+  selectedCountInStock: number | null;
   productCardState: ProductCardState = ProductCardState.nothing;
   
   constructor(private productsService: ProductsService) { }
@@ -68,7 +68,7 @@ export class ShopComponent implements OnInit {
     this.selected = index;
     this.selectedTitle = this.products[index].title;
     this.selectedPrice = this.products[index].price;
-    this.selectedPicture = this.products[index].picture;
+    this.selectedPictureUrl = this.products[index].pictureUrl;
     this.selectedCountInStock = this.products[index].countInStock;
   }
 
@@ -76,12 +76,13 @@ export class ShopComponent implements OnInit {
     this.selected = null;
     this.selectedTitle = null;
     this.selectedPrice = null;
-    this.selectedPicture = null;
+    this.selectedPictureUrl = null;
     this.selectedCountInStock = null;
   }
 
   addNewProduct() {
     this.productCardState = ProductCardState.create;
+    this.resetSelectedProps();
   }
 
   setProductCardState(newState: ProductCardState) {

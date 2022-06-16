@@ -15,10 +15,10 @@ export class ProductCreateComponent implements OnInit{
 		id: null,
 		title: '',
 		price: 0,
-		picture: '',
+		pictureUrl: '',
 		countInStock: 0,
 	}
-	
+
 	ngOnInit(): void {
 		this.product.id = parseInt(`${Date.now()}${Math.floor(Math.random() * 100)}`);
 	}
@@ -26,5 +26,5 @@ export class ProductCreateComponent implements OnInit{
 	handleCancelClick() {
 		this.productCanceled.emit();
 	}
-
+	
 }

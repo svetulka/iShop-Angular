@@ -2,7 +2,7 @@ export interface ProductInterface{
 	id: number | null;
 	title: string;
 	price: number;
-	picture: string;
+	pictureUrl: string;
 	countInStock: number;
 }
 
