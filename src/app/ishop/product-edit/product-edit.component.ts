@@ -18,12 +18,12 @@ export class ProductEditComponent implements OnInit{
 	@Output('product-canceled') public productCanceled = new EventEmitter();
 	@Output('product-updated') public productUpdated = new EventEmitter<ProductInterface>();
 	
-	productId: number;
 	formEditProduct: FormGroup;
 	pictureUrlFC: any;
 
 	ngOnInit(): void {
 		this.formEditProduct = new FormGroup({
+			id: new FormControl(this.editId),
 			title: new FormControl(this.editTitle, [
 				Validators.required
 			]),

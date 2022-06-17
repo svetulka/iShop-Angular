@@ -41,7 +41,19 @@ export class ShopComponent implements OnInit {
 
   updateProduct(product: ProductInterface) {
     const id = product.id;
+    
+    // console.log('id', id);
+    // console.log('product', product);
+    //mutable
+    //мутируешь только нужный элемент массива, ссылка массива остается прежней
+    
 
+    //immutable
+    //копируешь массив (спредом). изменяешь нужный элемент, вставляешь измененный массив в this.products.
+
+    //обнуляешь selected пропсы
+    //меняешь стейт на nothing
+  
   }
   
   productDeleted(id: number) {

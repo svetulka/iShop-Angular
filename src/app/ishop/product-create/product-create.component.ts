@@ -49,6 +49,7 @@ export class ProductCreateComponent implements OnInit{
 		};
 		this.productAdded.emit(product);
 		this.formCreateProduct.reset();
+		this.productId = parseInt(`${Date.now()}${Math.floor(Math.random() * 100)}`);
 	}
 
 }
