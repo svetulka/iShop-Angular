@@ -8,6 +8,7 @@ import { ProductCardState } from 'src/app/shared/interfaces';
 })
 
 export class ProductCardComponent {
+	@Input('selected-id') selectedId!: number | null;
 	@Input('selected-title') selectedTitle!: string | null;
 	@Input('selected-price') selectedPrice!: number | null;
 	@Input('selected-picture') selectedPicture!: string | null;

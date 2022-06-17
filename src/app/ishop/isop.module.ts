@@ -6,6 +6,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsService } from './ishop.service';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ProductsService } from './ishop.service';
     ProductComponent,
     ShopComponent,
     ProductCardComponent, 
-    ProductCreateComponent
+    ProductCreateComponent,
+    ProductEditComponent
   ],
   imports: [
     CommonModule,

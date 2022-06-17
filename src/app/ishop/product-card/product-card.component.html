@@ -1,5 +1,8 @@
 <div class="container">
 	<h2 class="display-6 text-center">Product details</h2>
+	<div>
+		<label>ID: {{ selectedId }}</label>
+	</div>
 	<div *ngIf="selectedPicture" class="row border">
 		<img [src]="selectedPicture" alt="" width="230" height="151">
 	</div>
@@ -9,7 +12,7 @@
 	</div>
 	<div *ngIf="selectedPrice" class="row border">
 		<div class="col-md-6 text-primary"><strong>Price</strong></div>
-		<div class="col-md-6">{{ selectedPrice }}</div>
+		<div class="col-md-6">{{ selectedPrice }} $</div>
 	</div>
 	<div *ngIf="selectedCountInStock" class="row border">
 		<div class="col-md-6 text-primary"><strong>Count in stock</strong></div>

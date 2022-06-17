@@ -12,7 +12,6 @@ export class ProductCreateComponent implements OnInit{
 	@Output('product-canceled') public productCanceled = new EventEmitter();
 	@Output('product-added') public productAdded = new EventEmitter<ProductInterface>();
 	
-	
 	productId: number;
 	formCreateProduct: FormGroup;
 	pictureUrlFC: any;

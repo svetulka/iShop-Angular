@@ -29,7 +29,7 @@ export class ProductComponent{
 
   handleEdit(event: Event, id: number | null) {
     if (typeof id !== 'number') throw new Error('The argument ID must be a number');
-    // event.stopPropagation();
+    event.stopPropagation();
     this.productEdited.emit(id);
   }
 }

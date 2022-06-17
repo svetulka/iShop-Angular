@@ -14,12 +14,15 @@ export class ShopComponent implements OnInit {
 
   products: ProductInterface[] = [];
 
-  selected: number | null;
+  selectedIndex: number | null;
 
+  selectedId: number | null;
   selectedTitle: string | null;
   selectedPrice: number | null;
   selectedPictureUrl: string | null;
   selectedCountInStock: number | null;
+
+
   productCardState: ProductCardState = ProductCardState.nothing;
   
   constructor(private productsService: ProductsService) { }
@@ -27,7 +30,6 @@ export class ShopComponent implements OnInit {
   get ProductCardState() {
     return ProductCardState;
   }
-
 
   ngOnInit() {   
     this.productsService.getData().subscribe((data: any) => this.products = data);
@@ -37,6 +39,11 @@ export class ShopComponent implements OnInit {
     this.products.push(product);
   }
 
+  updateProduct(product: ProductInterface) {
+    const id = product.id;
+
+  }
+  
   productDeleted(id: number) {
     const index = this.products.findIndex(item => item.id === id);
 
@@ -51,29 +58,42 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  productEdited(id: number) {
-    this.productCardState = ProductCardState.edit;
-    console.log('Click Edit button');
-  }
+  switchToEditMode(id: number) {
+    this.selectedId = id;
 
-  rowClicked(id: number) {
     const index = this.products.findIndex((item) => item.id == id);
-
-    if (this.selected === index) {
-      this.resetSelectedProps();
-      this.productCardState = ProductCardState.nothing;
-      return;
-    }
-    this.productCardState = ProductCardState.show;
-    this.selected = index;
+    
+    this.selectedIndex = index;
+    this.selectedId = this.products[index].id;
     this.selectedTitle = this.products[index].title;
     this.selectedPrice = this.products[index].price;
     this.selectedPictureUrl = this.products[index].pictureUrl;
     this.selectedCountInStock = this.products[index].countInStock;
+
+    this.productCardState = ProductCardState.edit;
+    
+  }
+
+  switchToCardViewMode(id: number) {
+    const index = this.products.findIndex((item) => item.id == id);
+
+    if (this.selectedIndex === index) {
+      this.resetSelectedProps();
+      this.productCardState = ProductCardState.nothing;
+      return;
+    }
+
+    this.selectedIndex = index;
+    this.selectedId = this.products[index].id;
+    this.selectedTitle = this.products[index].title;
+    this.selectedPrice = this.products[index].price;
+    this.selectedPictureUrl = this.products[index].pictureUrl;
+    this.selectedCountInStock = this.products[index].countInStock;
+    this.productCardState = ProductCardState.show;
   }
 
   resetSelectedProps() {
-    this.selected = null;
+    this.selectedIndex = null;
     this.selectedTitle = null;
     this.selectedPrice = null;
     this.selectedPictureUrl = null;
