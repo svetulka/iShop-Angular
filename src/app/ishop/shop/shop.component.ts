@@ -40,20 +40,21 @@ export class ShopComponent implements OnInit {
   }
 
   updateProduct(product: ProductInterface) {
-    const id = product.id;
-    
-    // console.log('id', id);
-    // console.log('product', product);
     //mutable
     //мутируешь только нужный элемент массива, ссылка массива остается прежней
-    
+    // const index = this.products.findIndex(item => item.id === product.id);
+    // this.products.splice(index, 1, product);
+
+    // -------------------------
 
     //immutable
     //копируешь массив (спредом). изменяешь нужный элемент, вставляешь измененный массив в this.products.
+    this.products = this.products.map(elem => elem.id !== product.id ? elem : product);
+    
+    if (product.id) {
+      this.switchToCardViewMode(product.id);
+    }
 
-    //обнуляешь selected пропсы
-    //меняешь стейт на nothing
-  
   }
   
   productDeleted(id: number) {
