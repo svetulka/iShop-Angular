@@ -15,8 +15,7 @@
 		</div>
 		<div class="form-group">
 			<label>Image URL</label>
-			<input class="form-control" name="pictureUrl" formControlName="pictureUrl"
-				pattern='(http)?s?:?(\/\/[^"]*\.(?:png|jpg|jpeg|gif|png|svg))' />
+			<input class="form-control" name="pictureUrl" formControlName="pictureUrl" />
 			<div *ngIf="formEditProduct.controls['pictureUrl'].invalid && formEditProduct.controls['pictureUrl'].touched">
 				<small *ngIf="pictureUrlFC.errors.pattern" class="alert alert-danger">
 					Please, provide correct picture URL

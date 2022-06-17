@@ -38,9 +38,9 @@ export class ProductEditComponent implements OnInit{
 				Validators.required
 			])
 		});
-	}
 
-	
+		this.pictureUrlFC = this.formEditProduct.get('pictureUrl');
+	}
 
 	handleCancelClick() {
 		this.productCanceled.emit();
@@ -53,7 +53,6 @@ export class ProductEditComponent implements OnInit{
 		};
 		this.productUpdated.emit(product);
 		this.formEditProduct.reset();
-		console.log('submit form edit');
 	}
 	
 }
