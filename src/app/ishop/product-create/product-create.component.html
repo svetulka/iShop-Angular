@@ -1,0 +1,52 @@
+<div class="container">
+	<form [formGroup]="formCreateProduct" (ngSubmit)="submit()">
+		<h2 class="display-6 text-center">Add New Product</h2>
+		<div class="form-group">
+			<label>ID: {{ productId }}</label>
+		</div>
+		<div class="form-group">
+			<label>Title</label>
+			<input class="form-control" name="title" formControlName="title" />
+			<small *ngIf="formCreateProduct.controls['title'].invalid && formCreateProduct.controls['title'].touched" 
+							class="alert alert-danger">
+				Title can't be empty
+			</small>
+		</div>
+		<div class="form-group">
+			<label>Image URL</label>
+			<input class="form-control" name="pictureUrl" formControlName="pictureUrl"
+				pattern='(http)?s?:?(\/\/[^"]*\.(?:png|jpg|jpeg|gif|png|svg))' />
+			<div *ngIf="formCreateProduct.controls['pictureUrl'].invalid && formCreateProduct.controls['pictureUrl'].touched">
+				<small *ngIf="pictureUrlFC.errors.pattern" class="alert alert-danger">
+					Please, provide correct picture URL
+				</small>
+				<small *ngIf="pictureUrlFC.errors.required" class="alert alert-danger">
+					Picture URL can't be empty
+				</small>
+			</div>
+		</div>
+		<div class="form-group">
+			<label>Price</label>
+			<input type="number" class="form-control" name="price" formControlName="price" />
+			<small *ngIf="formCreateProduct.controls['price'].invalid && formCreateProduct.controls['price'].touched" 
+							class="alert alert-danger">
+				Price can't be empty
+			</small>
+		</div>
+		<div class="form-group">
+			<label>Count in stock</label>
+			<input type="number" class="form-control" name="countInStock" formControlName="countInStock" />
+			<small *ngIf="formCreateProduct.controls['countInStock'].invalid && formCreateProduct.controls['countInStock'].touched" 
+							class="alert alert-danger">
+				Count in stock can't be empty.
+			</small>
+		</div>
+		<div class="form-group">
+			<button class="btn btn-danger btn-sm" (click)="handleCancelClick()">Cancel</button>
+			<button class="btn btn-primary btn-sm"
+				type="submit"
+				[disabled]="formCreateProduct.invalid || formCreateProduct.pending"
+			>Add</button>
+		</div>
+	</form>
+</div>

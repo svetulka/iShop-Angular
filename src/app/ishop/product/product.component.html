@@ -1,0 +1,39 @@
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<td>Title</td>
+			<td>Price</td>
+			<td>Picture</td>
+			<td>Count in stock</td>
+			<td>Action</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let product of productsArr; let productIndex = index" 			
+			[ngClass]="selected === productIndex ? 'selected' : '' "
+			(click)="handleRowClick(product.id)"
+			class="align-middle">
+			<td>
+				<span>
+					<strong>
+						<em>
+							{{ product.title }}
+						</em>
+					</strong>
+				</span>
+			</td>
+			<td>
+				{{ product.price }} $
+			</td>
+			<td>
+				<p class="picture-url">{{ product.pictureUrl }}</p>
+				<!-- <img [src]="product.pictureUrl" alt="" width="230" height="151"> -->
+			</td>
+			<td>{{ product.countInStock }}</td>
+			<td class="action-buttons-wrapper">
+				<button type="button" class="btn btn-primary btn-sm" (click)="handleEdit($event, product.id)">Edit</button>
+				<button type="button" class="btn btn-danger btn-sm" (click)="handleDelete($event, product.id)">Delete</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

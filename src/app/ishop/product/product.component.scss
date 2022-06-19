@@ -1,0 +1,26 @@
+tr {
+	&:hover {
+		cursor: pointer;
+	}
+
+	&.selected {
+		background-color: rgb(196, 252, 214);
+	}
+}
+
+.action-buttons-wrapper {
+	button {
+		margin-right: .5rem;
+	}
+}
+
+.picture-url {
+	max-width: 300px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+img {
+	object-fit: contain;
+}

@@ -1,0 +1,45 @@
+<div class="container">
+	<h1 class="display-4">{{ shopTitle }}</h1>
+	<div class="row">
+		<app-product 
+			[products-arr]="products"
+			[selected]="selectedIndex"
+			(product-deleted)="productDeleted($event)"
+			(row-clicked)="switchToCardViewMode($event)"
+			(product-edited)="switchToEditMode($event)"
+			class="col-sm-8"
+		>
+		</app-product>
+		<div class="col-sm-4">
+			<app-product-card *ngIf="productCardState === 'show'"
+				[selected-id]="selectedId"
+				[selected-title]="selectedTitle"
+				[selected-price]="selectedPrice"
+				[selected-picture]="selectedPictureUrl"
+				[selected-count-in-stock]="selectedCountInStock"
+			>		
+			</app-product-card>
+			
+			<app-product-create 
+				*ngIf="productCardState === ProductCardState.create" 
+				(product-canceled)="setProductCardState(ProductCardState.nothing)"
+				(product-added)="onCreate($event)"
+			></app-product-create>
+
+			<app-product-edit *ngIf="productCardState === ProductCardState.edit"
+				[edit-id]="selectedId"			
+				[edit-title]="selectedTitle"
+				[edit-price]="selectedPrice"
+				[edit-picture-url]="selectedPictureUrl"
+				[edit-count-in-stock]="selectedCountInStock"
+				(product-canceled)="setProductCardState(ProductCardState.nothing)" 
+				(product-updated)="updateProduct($event)">
+			</app-product-edit>
+		</div>
+	</div>
+	<div class="row">
+		<div class="btn-wrapper text-center col-sm-8">
+			<button type="button" class="btn btn-primary btn-sm btn-block" (click)="addNewProduct()">Add New Product</button>
+		</div>
+	</div>
+</div>

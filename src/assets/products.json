@@ -1,0 +1,44 @@
+[
+	{
+      "id": 0,
+      "title": "Spoon",
+      "price": 3,
+      "pictureUrl": "https://www.thoughtco.com/thmb/RQa7PCRIvyeuDFv_reINweTGfVI=/1885x1414/smart/filters:no_upscale()/GettyImages-1097037546-35e5377d07704fa69c8ce93833b7afdd.jpg",
+      "countInStock": 300
+	},
+	{
+      "id": 1,
+      "title": "Fork",
+      "price": 4,
+      "pictureUrl": "https://5.imimg.com/data5/NN/PB/MY-2/ss-fork-spoon-500x500.jpg",
+      "countInStock": 200
+	},
+	{
+      "id": 2,
+      "title": "Pan",
+      "price": 35,
+      "pictureUrl": "https://media.takealot.com/covers_tsins/47988228/47988228-zoom.jpg",
+      "countInStock": 43
+	},
+	{
+      "id": 3,
+      "title": "Knife",
+      "price": 10,
+      "pictureUrl": "https://m.media-amazon.com/images/I/51ydt0v8cdL._AC_SL1500_.jpg",
+      "countInStock": 500
+	},
+	{
+      "id": 4,
+      "title": "Pot",
+      "price": 25,
+      "pictureUrl": "https://www.ikea.com/gb/en/images/products/annons-pot-with-lid-glass-stainless-steel__0714768_pe730240_s5.jpg",
+      "countInStock": 70
+	},
+	{
+      "id": 5,
+      "title": "Bench of Pots",
+      "price": 425,
+      "pictureUrl": "https://m.media-amazon.com/images/I/81jZNuVLr7L._AC_SX466_.jpg",
+      "countInStock": 870
+	}
+]
